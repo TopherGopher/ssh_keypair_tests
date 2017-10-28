@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: webserver-rc
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - image: caveat4u/ssh_keypair_tests:latest
+        name: Topher-SSH-Generator
+      imagePullPolicy: Always
