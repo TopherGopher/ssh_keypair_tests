@@ -1,0 +1,13 @@
+---
+
+folder_name: SSH RSA Keypairs
+# 100MB
+num_procs: 5
+keys_per_worker: 100000
+
+write_workers: 5
+push_workers: 5
+
+# num_procs: 8
+# keys_per_worker: 10
+storage: disk

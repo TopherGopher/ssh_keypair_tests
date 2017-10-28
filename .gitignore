@@ -1,0 +1,4 @@
+secrets.yml
+*.pyc
+client_secrets.json
+creds.txt

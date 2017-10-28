@@ -26,7 +26,7 @@ from time import sleep
 
 
 class StoreIt():
-    def __init__(self, retries=20, sleep_time_between_retries=60):
+    def __init__(self, retries=20, sleep_time_between_retries=10):
         self.drive = self.auth_drive()
         # Create httplib.Http() object.
         # Thread safe love :-)
@@ -138,6 +138,7 @@ class StoreIt():
         for i in range(1, self.retries + 1):
             try:
                 file.Upload(param={'http': self.http})
+                self.logger.info("Uploaded {0}".format(fname))
                 break
             except ApiRequestError as e:
                 self.logger.error(e)
