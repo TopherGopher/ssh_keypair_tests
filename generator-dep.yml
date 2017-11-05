@@ -19,9 +19,10 @@ spec:
       containers:
       - name: tophergopher-ssh-generator
         image: docker.io/caveat4u/ssh_keypair_tests:latest
+        imagePullPolicy: Always
         volumeMounts:
         - name: google-oauth-client-secrets
-          mountPath: "/"
+          mountPath: "/data/client_secrets"
           readOnly: true
       volumes:
       - name: google-oauth-client-secrets
@@ -29,4 +30,4 @@ spec:
           secretName: google-oauth-client-secrets
           items:
           - key: client_secrets.json
-            path: "data/client_secrets.json"
+            path: "client_secrets.json"

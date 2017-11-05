@@ -1,5 +1,5 @@
 secrets.yml
-client_secrets.json
+client_secrets
 creds.txt
 *.pyc
 Dockerfile
