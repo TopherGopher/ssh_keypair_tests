@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tophergopher-ssh-generator
+spec:
+  revisionHistoryLimit: 3
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tophergopher-ssh-generator
+    spec:
+      containers:
+      - name: tophergopher-ssh-generator
+        image: docker.io/caveat4u/ssh_keypair_tests:latest
+        volumeMounts:
+        - name: google-oauth-client-secrets
+          mountPath: "/"
+          readOnly: true
+      volumes:
+      - name: google-oauth-client-secrets
+        secret:
+          secretName: google-oauth-client-secrets
+          items:
+          - key: client_secrets.json
+            path: "data/client_secrets.json"
